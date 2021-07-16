@@ -6,14 +6,14 @@ using Flux:@functor
 export NBeatsBlock, NBeatsStack
 
 """
-    NBeatsBlock: funcdamental building block of an NBeats model.
+    NBeatsBlock: fundamental building block of an NBeats model
 """
-struct NBeatsBlock
-    core::Vector
-    back_fc::Dense
-    forw_fc::Dense
-    back_scale::Vector
-    forw_scale::Vector
+struct NBeatsBlock{C,D,P}
+    core::C
+    back_fc::D
+    forw_fc::D
+    back_scale::P
+    forw_scale::P
 end
 
 @functor NBeatsBlock
@@ -42,10 +42,10 @@ function (m::NBeatsBlock)(x)
 end
 
 """
-    NBeatsStack: structure containing a vector of `NBeatsBlock`
+    NBeatsStack: higher-level building block of the N-Beats model. Contains a vector of `NBeatsBlock`
 """
-struct NBeatsStack
-    blocks::Vector
+struct NBeatsStack{B}
+    blocks::B
 end
 
 @functor NBeatsStack

@@ -17,8 +17,8 @@ Y = target_gen(X)
 scatter(X, Y)
 
 config = Dict(
-    :back_size => 32, 
-    :forw_size => 8, 
+    :back_size => 20, 
+    :forw_size => 5, 
     :num_hidden => 64, 
     :num_layers_core => 2,
     :num_blocks => 4,
@@ -61,7 +61,7 @@ Flux.@epochs 1 Flux.train!(loss, ps, dtrain, opt)
 
 scatter(X, Y)
 for i in 0:9
-    infer_pt = 100*i + 1
+    infer_pt = 100 * i + 1
     X_infer = Y[infer_pt:infer_pt + config[:back_size] - 1]
     Y_infer = Y[infer_pt + config[:back_size]:infer_pt + config[:back_size] + config[:forw_size] - 1]
     p_infer = m(X_infer)
