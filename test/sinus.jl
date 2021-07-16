@@ -17,8 +17,8 @@ Y = target_gen(X)
 scatter(X, Y)
 
 config = Dict(
-    :back_size => 16, 
-    :forw_size => 4, 
+    :back_size => 32, 
+    :forw_size => 8, 
     :num_hidden => 64, 
     :num_layers_core => 2,
     :num_blocks => 4,
@@ -69,3 +69,5 @@ for i in 0:9
     loss(X_infer, Y_infer)
     scatter!(infer_x, m(X_infer), color=:red)
 end
+
+# save("sinus-fit.png", GLMakie.current_figure())
